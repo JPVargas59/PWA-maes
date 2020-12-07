@@ -1,0 +1,12 @@
+
+<div>
+    <h1>Eventos</h1>
+    <app-event-card
+            *ngFor="let evento of eventos"
+            [title]="evento.nombre"
+            [description]="evento.descripcion"
+            [detail]="evento.fecha"
+    >
+
+    </app-event-card>
+</div>

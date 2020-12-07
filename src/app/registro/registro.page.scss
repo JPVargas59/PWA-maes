@@ -1,0 +1,23 @@
+.title {
+  margin-top: 1em;
+  font-weight: bold;
+  font-size: 5em;
+  background: -webkit-linear-gradient(117deg, #007AFF 0%, #30B1E7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.container {
+  margin-top: 5em;
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+ion-item {
+  --border-color: var(--ion-color-secondary);
+  --padding-start: 0;
+}
+
+small {
+  color: var(--ion-color-danger);
+}

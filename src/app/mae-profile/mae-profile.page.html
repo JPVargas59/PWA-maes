@@ -1,0 +1,36 @@
+<ion-content class="ion-padding">
+
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img src="../../assets/grey.jpg">
+    </ion-avatar>
+    <ion-label>
+      <h1>{{mae.nombre}}</h1>
+      <h3>Carrera del mae - semestre</h3>
+    </ion-label>
+  </ion-item>
+
+  <ion-button expand="block" color="secondary">
+    <p>Registrar asesoria</p>
+  </ion-button>
+
+  <div *ngIf="conoceMae.length > 0">
+    <h1 class="ion-color-secondary">Conoce a tu MAE</h1>
+    <p>{{conoceMae}}</p>
+  </div>
+
+  <div *ngIf="materias.length > 0">
+    <h1>Materias</h1>
+    <app-materia-element *ngFor="let materia of materias" [materia]="materia"></app-materia-element>
+  </div>
+
+  <div *ngIf="horarios.length > 0">
+    <h1>Horario</h1>
+    <div *ngFor="let horario of horarios" class="horario">
+      <h5>{{utils.semana[horario.dia]}}</h5>
+      <p>De {{horario.inicio}} a {{horario.fin}}</p>
+    </div>
+  </div>
+
+
+</ion-content>

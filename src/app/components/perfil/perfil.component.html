@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="ion-text-center">
+        <h1 class="title">MAES</h1>
+    </div>
+
+    <ion-item lines="none">
+        <ion-label position="floating" mode="md">
+            Tu matricula</ion-label>
+        <ion-input
+                mode="md"
+                placeholder="Ingresa tu matricula"
+                pattern="text"
+                [(ngModel)]="user.matricula"
+                name="matricula"
+                disabled
+        >
+        </ion-input>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label position="floating" mode="md">
+            Tu nombre</ion-label>
+        <ion-input
+                mode="md"
+                placeholder="Ingresa tu nombre"
+                pattern="text"
+                [(ngModel)]="user.nombre"
+                name="nombre"
+                disabled
+        >
+        </ion-input>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label position="floating" mode="md">
+            Tu apellido</ion-label>
+        <ion-input
+                mode="md"
+                placeholder="Ingresa tu apellido"
+                pattern="text"
+                [(ngModel)]="user.apellido"
+                name="apellido"
+                disabled
+        >
+        </ion-input>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label position="floating" mode="md">
+            Tu correo</ion-label>
+        <ion-input
+                mode="md"
+                placeholder="Ingresa tu correo"
+                pattern="email"
+                [(ngModel)]="user.correo"
+                name="correo"
+                disabled
+        >
+        </ion-input>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label position="floating" mode="md">
+            Tu teléfono</ion-label>
+        <ion-input
+                mode="md"
+                placeholder="Ingresa tu telefono"
+                pattern="tel"
+                [(ngModel)]="user.telefono"
+                name="telefono"
+                disabled
+        >
+        </ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+        <ion-label position="floating" mode="md">
+            Tu carrera</ion-label>
+        <ion-input
+                mode="md"
+                placeholder="Tu carrera"
+                pattern="text"
+                [(ngModel)]="user.carrera"
+                name="telefono"
+                disabled
+        >
+        </ion-input>
+    </ion-item>
+
+    <ion-button class="ion-float-left" color="light" routerLink="/home">Regresar</ion-button>
+    <ion-button class="ion-float-right" color="danger" (click)="removeUser()">Salir</ion-button>
+</div>

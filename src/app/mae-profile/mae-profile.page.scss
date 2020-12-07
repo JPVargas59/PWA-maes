@@ -1,0 +1,18 @@
+ion-button > *{
+  color: white;
+}
+
+h1 {
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+}
+
+ion-label > h1 {
+  color: var(--ion-color-primary);
+}
+
+.horario {
+  margin-left: 1em;
+}
+
+

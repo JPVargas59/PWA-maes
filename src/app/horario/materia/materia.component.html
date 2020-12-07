@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="secondary" text="volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">
+      {{materia}}
+    </ion-title>
+    <ion-buttons slot="end" (click)="fav(true)">
+      <ion-button>
+        <ion-icon slot="end" name="star" [color]="isFav | async"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button
+          expand="block"
+          (click)="changeDay = !changeDay"
+          class="ion-padding"
+  >
+    {{semana[selected - 1]}} - Toca para cambiar dia
+  </ion-button>
+
+  <div *ngIf="changeDay; then changeDayList"></div>
+
+  <div *ngIf="horarios; then horariosList"></div>
+
+  <div *ngIf="!horarios">
+    <h1>:( No hay horarios para esta materia</h1>
+  </div>
+
+</ion-content>
+
+
+<ng-template #horariosList>
+  <div class="ion-padding" *ngIf="horarios && maes">
+    <div *ngFor="let dia of semana; index as i">
+      <div *ngIf="horarios[i] && selected == i + 1">
+        <div *ngFor="let horario of horarios[i] | keyvalue">
+          <app-section-title [name]="horario.key"></app-section-title>
+          <ion-item *ngFor="let mae of horario.value"
+                    lines="none"
+                    [routerLink]="'/mae/' + mae.matricula + '/' + maes[mae.matricula].nombreCompleto"
+          >
+            <ion-label>
+              <h4>{{maes[mae.matricula].nombreCompleto}}</h4>
+              <p>hasta las <b>{{mae.fin}}</b></p>
+            </ion-label>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+
+<ng-template #changeDayList>
+  <ion-segment
+          [value]="selected" mode="md"
+          (ionChange)="selected = $event.detail.value; changeDay = false"
+          scrollable="true"
+  >
+    <ion-segment-button *ngFor="let dia of semana; index as i" [value]="i + 1"  mode="md">
+      <ion-label  mode="md">{{dia}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ng-template>
+
+

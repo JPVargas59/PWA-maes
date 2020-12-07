@@ -1,0 +1,142 @@
+<ion-content force-overscroll>
+
+  <div class="ion-text-center">
+    <h1 class="title">MAES</h1>
+  </div>
+
+  <div class="container">
+    <ng-container [ngSwitch]="step">
+      <ng-container *ngSwitchCase="1">
+        <h2>
+          Bienvenido
+        </h2>
+        <p>Para continuar por favor introduce tu matricula</p>
+
+        <ion-item lines="none">
+          <ion-label position="floating" mode="md" [color]="userValid"
+          >Matricula</ion-label>
+          <ion-input
+                  mode="md"
+                  placeholder="Ingresa tu matricula"
+                  pattern="text"
+                  [(ngModel)]="user.matricula"
+                  name="matricula"
+          ></ion-input>
+          <small
+                  [hidden]="userValid != 'danger'">
+            No es una matricula válida
+          </small>
+        </ion-item>
+        <ion-button class="ion-float-right" (click)="checkUser()">Siguiente</ion-button>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="2">
+        <h3>Para poder continuar</h3>
+        <p>
+          Por favor introduce tus datos.
+          Esto será usado para registrar tus asesorias con solo un botón
+        </p>
+        <form (ngSubmit)="register()">
+          <ion-item lines="none">
+            <ion-label position="floating" mode="md">
+              ¿Cuál es tu matrícula?</ion-label>
+            <ion-input
+                    mode="md"
+                    placeholder="Ingresa tu matricula"
+                    pattern="text"
+                    [(ngModel)]="user.matricula"
+                    name="matricula"
+                    disabled
+            >
+            </ion-input>
+            <small class="ion-color-danger" [hidden]="validation.nombre">Por favor pon tu nombre</small>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating" mode="md">
+                    ¿Cuál es tu nombre?</ion-label>
+            <ion-input
+                    mode="md"
+                    placeholder="Ingresa tu nombre"
+                    pattern="text"
+                    [(ngModel)]="user.nombre"
+                    name="nombre"
+            >
+            </ion-input>
+            <small class="ion-color-danger" [hidden]="validation.nombre">Por favor pon tu nombre</small>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating" mode="md">
+              ¿Cuál es tu apellido?</ion-label>
+            <ion-input
+                    mode="md"
+                    placeholder="Ingresa tu apellido"
+                    pattern="text"
+                    [(ngModel)]="user.apellido"
+                    name="apellido"
+                    required
+            >
+            </ion-input>
+            <small class="ion-color-danger" [hidden]="validation.apellido">Por favor pon tu apellido</small>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating" mode="md">
+              ¿Cuál es tu correo?</ion-label>
+            <ion-input
+                    mode="md"
+                    placeholder="Ingresa tu correo"
+                    pattern="email"
+                    [(ngModel)]="user.correo"
+                    name="correo"
+                    required
+            >
+            </ion-input>
+            <small class="ion-color-danger" [hidden]="validation.correo">Por favor pon tu correo</small>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating" mode="md">
+              ¿Cuál es tu teléfono?</ion-label>
+            <ion-input
+                    mode="md"
+                    placeholder="Ingresa tu telefono"
+                    pattern="tel"
+                    [(ngModel)]="user.telefono"
+                    name="telefono"
+                    required
+            >
+            </ion-input>
+            <small class="ion-color-danger" [hidden]="validation.telefono">Por favor pon tu telefono</small>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-select required [(ngModel)]="user.carrera" name="carrera" okText="Listo" cancelText="Cancelar">
+              <ion-select-option value="" disabled>Selecciona tu carrera</ion-select-option>
+              <ion-select-option
+                      [value]="carrera.siglas"
+                      *ngFor="let carrera of carreras"
+              >
+               ({{carrera.siglas}}) {{carrera.nombre}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <small class="ion-color-danger" [hidden]="validation.carrera">Por favor pon tu carrera</small>
+          <ion-button class="ion-float-left" color="light" (click)="step = 1">Regresar</ion-button>
+          <ion-button class="ion-float-right" type="submit" (submit)="register()">Continuar</ion-button>
+
+        </form>
+      </ng-container>
+
+
+      <ng-container *ngSwitchCase="3">
+        <h2>Bienvenido {{user.nombre}}</h2>
+        <p>
+          Ya tenemos tu información registrada para cuando registres una asesoria
+        con algún MAE.
+        </p>
+        <ion-button expand="block" (click)="goToHome()">Continuar</ion-button>
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+
+</ion-content>

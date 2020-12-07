@@ -1,0 +1,50 @@
+h1 {
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+}
+
+#asesorados, #asesorias {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--ion-color-dark)
+}
+
+small {
+  font-weight: bold;
+  color: var(--ion-color-primary);
+}
+
+.event-card {
+  background-color: white;
+  border-radius: 0.5em;
+  padding: 0.8em 0.8em;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 0.5em;
+}
+
+.event-card > * {
+  flex: 1 100%;
+}
+
+.event-card > .event-title {
+  margin-top: 0;
+  flex: 1 50%;
+  font-weight: bold;
+}
+
+.event-card > .event-detail {
+  flex: 1 50%;
+  justify-content: flex-end;
+  margin-top: 8px;
+  text-align: end;
+  padding-right: 0.5em;
+  color: var(--ion-color-secondary);
+}
+
+.event-card > .event-description {
+  margin-bottom: 0;
+  margin-top: 0;
+  flex: 1 100%;
+}
+

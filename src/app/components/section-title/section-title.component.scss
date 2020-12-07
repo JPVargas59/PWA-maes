@@ -1,0 +1,19 @@
+div {
+  position: sticky;
+  margin-top: 0;
+  padding-top: 0.5em;
+  margin-bottom: 0;
+  margin-left: 1em;
+  top: 0em;
+  background-color: white;
+  width: 100%;
+  z-index: 10;
+}
+
+h1 {
+  color: var(--ion-color-secondary);
+  margin-top: 0;
+  font-size: 2em;
+  margin-bottom: 0;
+  font-weight: bold;
+}

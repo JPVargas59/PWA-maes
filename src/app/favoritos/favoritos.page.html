@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title color="primary">Favoritos</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div *ngIf="favorites.length > 0" class="ion-padding">
+        <ion-button
+                expand="block"
+                (click)="changeDay = !changeDay"
+        >
+            {{semana[selected - 1]}} - Toca para cambiar dia
+        </ion-button>
+        <div *ngIf="changeDay; then changeDayList"></div>
+        <div *ngFor="let materia of favorites; index as i">
+            <h2 (click)="utils.goto('/horario/' + materia.id + '/' + materia.nombre)">
+                {{materia.nombre}}
+            </h2>
+            <div *ngFor="let horario of horarios[i] | async">
+                <div *ngIf="!horario">
+                    <p>No hay MAES para el dia seleccionado :(</p>
+                </div>
+                <div *ngIf="horario" [routerLink]="'/mae/' + horario.MaeID + '/' + horario.nombre + ' ' + horario.apellido">
+                    <h5>{{maes[horario.matricula].nombreCompleto}}</h5>
+                    <p id="grey-text">Desde {{horario.inicio}} hasta las {{horario.fin}}</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="favorites.length == 0" class="ion-padding-top">
+        <p>
+            Parece que aún no añades ninguna materia a favoritos. Para hacerlo, presiona
+            el icono de estrella (<ion-icon name="star" color="black"></ion-icon>) que aparece
+            en la pantalla de horario de una materia.
+        </p>
+    </div>
+
+</ion-content>
+
+<ng-template #changeDayList>
+    <ion-segment
+            [value]="selected" mode="md"
+            (ionChange)="change($event.detail.value); changeDay = false"
+            scrollable
+    >
+        <ion-segment-button *ngFor="let dia of semana; index as i" [value]="i + 1" mode="md">
+            <ion-label>{{dia}}</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+</ng-template>

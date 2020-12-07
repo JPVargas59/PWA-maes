@@ -1,0 +1,49 @@
+<ion-searchbar
+        mode="ios"
+        (ionChange)="filter($event)"
+        (ionFocus)="searching = true"
+        (ionCancel)="searching = false"
+        (ionClear)="searching = false"
+></ion-searchbar>
+
+<!--
+<div *ngIf="searching">
+  <ion-segment (ionChange)="cambiarModalidad($event)" mode="md" [(ngModel)]="modalidad">
+    <ion-segment-button value="tradicional" checked  mode="md">
+      <ion-label>Tradicional</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</div>
+-->
+
+<div *ngIf="searched; then busqueda else materiasList">
+
+</div>
+
+<ng-template #materiasList>
+  <div  *ngIf="materias">
+    <div *ngFor="let header of firstChars">
+      <app-section-title [name]="header"></app-section-title>
+      <app-materia-element
+              *ngFor="let materia of materias"
+              (click)="goto(materia)"
+              [header]="header"
+              [materia]="materia"
+      >
+      </app-materia-element>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #busqueda>
+  <div class="ion-padding">
+    <h1 id="resultadosTitle">Resultados</h1>
+    <p id="resultadosSubtitle">de la búsqueda</p>
+    <app-materia-element
+            *ngFor="let materia of materias"
+            (click)="goto(materia)"
+            [materia]="materia"
+    >
+    </app-materia-element>
+  </div>
+</ng-template>

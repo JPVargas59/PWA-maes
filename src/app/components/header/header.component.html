@@ -1,0 +1,12 @@
+<div id="header-fixed">
+  <h1>
+    <ion-icon name="arrow-back" class="icon-fixed" *ngIf="back" (click)="goto(back)"></ion-icon>
+    {{(title.length>25)? (title | slice:0:25)+'..':(title)}}
+  </h1>
+</div>
+<div id="header-bg">
+  <h1>
+    <ion-icon name="arrow-back" class="icon-bg" *ngIf="back" (click)="goto(back)"></ion-icon>
+    {{(title.length>12)? (title | slice:0:12)+'..':(title)}}
+  </h1>
+</div>
